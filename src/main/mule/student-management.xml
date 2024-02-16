@@ -16,7 +16,7 @@
         </http:listener>
         <apikit:router config-ref="student-management-config" />
         <logger level="INFO" doc:name="Logger" doc:id="b4d00003-5779-4745-8c9b-9625eebd29f3" />
-		<logger level="INFO" doc:name="Logger" doc:id="9486b559-f9d1-457a-8965-b82b053c9ff4" />
+		<logger level="INFO" doc:name="Logger" doc:id="9486b559-f9d1-457a-8965-b82b053c9ff4" message="sdugvjhvsdjh"/>
 		<ee:transform doc:name="Transform Message" doc:id="826d976f-828b-46b4-b152-21371a1b0997" >
 			<ee:message >
 				<ee:set-payload ><![CDATA[%dw 2.0
