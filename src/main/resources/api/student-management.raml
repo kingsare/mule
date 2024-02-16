@@ -1,0 +1,70 @@
+#%RAML 1.0
+title: student-management
+version: v1
+baseUri: /api
+
+types:
+  Student:
+    properties:
+      id: number
+      firstName: string
+      lastName: string
+      birthDate: string
+      email: string
+
+/students:
+  get:
+    description: Retrieve a list of all students
+    responses:
+      200:
+        body:
+          application/json:
+            example: |
+              [
+                {"id": 1, "firstName": "John", "lastName": "Doe", "birthDate": "1995-05-15", "email": "john.doe@example.com"},
+                {"id": 2, "firstName": "Jane", "lastName": "Smith", "birthDate": "1998-08-22", "email": "jane.smith@example.com"}
+              ]
+
+  post:
+    description: Create a new student
+    body:
+      application/json:
+        example: |
+          {"firstName": "Alice", "lastName": "Johnson", "birthDate": "1997-03-10", "email": "alice.johnson@example.com"}
+    responses:
+      201:
+        body:
+          application/json:
+            example: |
+              {"id": 3, "firstName": "Alice", "lastName": "Johnson", "birthDate": "1997-03-10", "email": "alice.johnson@example.com"}
+
+  /{studentId}:
+    uriParameters:
+      studentId: number
+    get:
+      description: Retrieve details of a specific student
+      responses:
+        200:
+          body:
+            application/json:
+              example: |
+                {"id": 1, "firstName": "John", "lastName": "Doe", "birthDate": "1995-05-15", "email": "john.doe@example.com"}
+
+    put:
+      description: Update details of a specific student
+      body:
+        application/json:
+          example: |
+            {"firstName": "John", "lastName": "Doe", "birthDate": "1995-05-15", "email": "john.doe@example.com"}
+      responses:
+        200:
+          body:
+            application/json:
+              example: |
+                {"id": 1, "firstName": "John", "lastName": "Doe", "birthDate": "1995-05-15", "email": "john.doe@example.com"}
+
+    delete:
+      description: Delete a specific student
+      responses:
+        204:
+          description: Student deleted successfully
